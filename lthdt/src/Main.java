@@ -1,11 +1,9 @@
 import java.util.*;
 
-// ===== Giao diện PhuongThucThanhToan =====
 interface PhuongThucThanhToan {
     void thanhToan(double soTien, String tenKhachHang);
 }
 
-// ===== Các lớp thanh toán cụ thể =====
 class ThanhToanTienMat implements PhuongThucThanhToan {
     @Override
     public void thanhToan(double soTien, String tenKhachHang) {
@@ -33,7 +31,6 @@ class ThanhToanMomo implements PhuongThucThanhToan {
     }
 }
 
-// ===== Lớp SanPham =====
 abstract class SanPham {
     protected String maSanPham;
     protected String tenSanPham;
@@ -54,7 +51,6 @@ abstract class SanPham {
     public abstract String toString();
 }
 
-// ===== Sản phẩm điện tử =====
 class SanPhamDienTu extends SanPham {
     private String imei;
     private int thoiGianBaoHanh;
@@ -71,7 +67,6 @@ class SanPhamDienTu extends SanPham {
     }
 }
 
-// ===== Sản phẩm thực phẩm =====
 class SanPhamThucPham extends SanPham {
     private String hanSuDung;
 
@@ -86,7 +81,6 @@ class SanPhamThucPham extends SanPham {
     }
 }
 
-// ===== Lớp DonHang =====
 class DonHang {
     private String tenKhachHang;
     private List<SanPham> danhSachSanPham = new ArrayList<>();
@@ -118,15 +112,15 @@ class DonHang {
     }
 }
 
-// ===== Lớp chính (Main) =====
+
 public class Main {
     public static void main(String[] args) {
-        // Tạo sản phẩm
+ 
         SanPham sp1 = new SanPhamDienTu("E01", "Laptop ASUS", 15000000, "1234567890", 24);
         SanPham sp2 = new SanPhamThucPham("F01", "Bánh quy Oreo", 30000, "2025-12-01");
         SanPham sp3 = new SanPhamThucPham("F02", "Sữa tươi Vinamilk", 25000, "2025-11-15");
 
-        // Tạo đơn hàng 1
+
         DonHang dh1 = new DonHang("Nguyễn Văn A");
         dh1.themSanPham(sp1);
         dh1.themSanPham(sp2);
@@ -135,7 +129,7 @@ public class Main {
 
         System.out.println();
 
-        // Đơn hàng 2
+  
         DonHang dh2 = new DonHang("Nguyễn Văn B");
         dh2.themSanPham(sp2);
         dh2.themSanPham(sp3);
@@ -144,7 +138,6 @@ public class Main {
 
         System.out.println();
 
-        // Đơn hàng 3
         DonHang dh3 = new DonHang("Trần Thị C");
         dh3.themSanPham(sp1);
         dh3.setPhuongThucThanhToan(new ThanhToanMomo());
